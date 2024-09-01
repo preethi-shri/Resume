@@ -3,95 +3,372 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Portfolio</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>My Portfolio</title>
+    <style>
+        :root {
+            --background-color: #121212;
+            --text-color: #f0f0f0;
+            --accent-color: #1f8ef1;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-color); /* Set background color for the body */
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center; /* Center align content vertically */
+            padding: 10px 20px; /* Reduced padding */
+            height: 50px; /* Decreased height of the header */
+            background-color: rgb(4, 0, 0); /* Solid background color for header */
+            color: var(--text-color); /* Ensure text color is visible */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        #home {
+            height: 100vh;
+            padding: 60px 20px;
+            text-align: center;
+            background-image: url('https://wallpaperaccess.com/full/5652030.jpg'); /* Background image for the Home section */
+            background-size: cover;
+            background-position: center;
+            color: var(--text-color); /* Ensure text color is visible */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+            align-items: center;
+            scroll-snap-align: start; /* Snap scrolling */
+        }
+
+        #about {
+            height: 100vh; /* Occupies full page height */
+            background-color: #ffffff; /* White background color */
+            color: #000000; /* Black text color */
+            padding: 60px 20px;
+            margin: 0; /* Removed margin to ensure full page coverage */
+            border-radius: 0; /* Removed border-radius for full coverage */
+            scroll-snap-align: start; /* Snap scrolling */
+            line-height: 1.8; /* Increased line spacing */
+            font-size: 1.2rem; /* Increased text size */
+        }
+        #projects
+        {
+            height: 100vh;
+            background-color: #ffffff;
+            color: #000000;
+            padding: 60px 20px;
+            margin: 0;
+            border-radius: 0;
+        }
+
+        /* Ensure that the skills section has a Flexbox layout */
+#skills {
+    height: 100vh;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 60px 20px;
+    margin: 0;
+    border-radius: 0;
+    display: flex;
+    align-items: flex-start; /* Align items to the top */
+    justify-content: center; /* Center content horizontally */
+    flex-wrap: wrap; /* Wrap content if necessary */
+}
+
+/* Container for skill columns */
+.skills-container {
+    display: flex;
+    padding: 60px 20px;
+    margin: 0;
+    justify-content: space-between; /* Distribute space between columns */
+    width: 100%;
+    max-width: 1200px; /* Max width for the container */
+}
+
+/* Each column will take up 50% of the container's width */
+.skills-column {
+    flex: 1;
+    min-width: 300px; /* Minimum width of each column */
+}
+
+/* Ensure the skill-box takes up space within its column */
+.skill-box {
+    background-color: #f0f0f0;
+    color: #000000;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+
+        
+
+        #about h2, #projects h2, #skills h2, #contact h2 {
+            text-align: center;
+            margin-bottom: 20px; /* Adjust margin below the title */
+            font-size: 2rem; /* Increased title size */
+        }
+
+        #about p,
+        #about ul {
+            text-align: left;
+        }
+
+        #about table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        #about table, #about th, #about td {
+            border: 1px solid #000000; /* Black border */
+        }
+
+        #about th, #about td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        #about th {
+            background-color: #f0f0f0; /* Light gray background for headers */
+            color: #000000;
+        }
+
+        #projects .project-box {
+            background-color: #f0f0f0; /* Light gray background for project boxes */
+            color: #000000; /* Black text color */
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 8px; /* Rounded corners */
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        #skills .skill-box {
+            background-color: #f0f0f0; /* Light gray background for skill boxes */
+            color: #000000; /* Black text color */
+            border: 1px solid #ccc; /* Light gray border */
+            border-radius: 8px; /* Rounded corners */
+            padding: 10px;
+            margin: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            display: inline-block;
+            text-align: center;
+            width: calc(25% - 20px); /* Adjust width and margin for responsive layout */
+        }
+        #contact {
+    height: 100vh;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 60px 20px;
+    margin: 0;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-info {
+    text-align: center; /* Center align text */
+}
+
+.contact-info p {
+    margin: 10px 0; /* Add vertical spacing between contact info items */
+}
+
+.contact-info a {
+    color: var(--accent-color); /* Accent color for links */
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-info a:hover {
+    color: #000000; /* Darken the color on hover for better visibility */
+}
+
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(30, 30, 30, 0.8); /* Added transparency */
+        }
+
+        section {
+            scroll-snap-type: y mandatory; /* Snap scrolling */
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <div class="container">
-            <h1 class="logo">Your Name</h1>
-            <ul class="nav-links">
+    <header>
+        <h1>Preethi</h1>
+        <nav>
+            <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#resume">Resume</a></li>
                 <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- Home Section -->
-    <section id="home" class="home">
-        <div class="container">
-            <div class="home-content">
-                <h2>Welcome to My Portfolio</h2>
-                <p>Your Name | Professional Title</p>
-                <img src="your-photo.jpg" alt="Your Photo" class="profile-photo">
-            </div>
+    <section id="home">
+        <h2>Welcome to My Portfolio</h2>
+        <h2>I'm PREETHI</h2>
+    </section>
+
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Name: P.M.Preethi</p>
+        <p>About</p>
+        <ul type="disc">
+            <li>Aspiring Artificial Intelligence specialist with a strong foundation in machine learning, deep learning, and data analysis.</li>
+            <li>Proficient in Python, TensorFlow, and natural language processing, with hands-on experience in developing AI models and applications.</li>
+            <li>Passionate about leveraging AI to solve real-world problems and eager to contribute to innovative projects.</li>
+            <li>Actively seeking opportunities to apply academic knowledge in a professional setting, with a focus on continuous learning and skill development.</li>
+            <li>Hobbies: traveling and cooking</li>
+        </ul>
+
+        <h3>Education Qualifications</h3>
+        <table>
+            <tr>
+                <th>Degree</th>
+                <th>Institution</th>
+                <th>Year of Passing</th>
+                <th>Percentage/CGPA</th>
+            </tr>
+            <tr>
+                <td>B.Tech in Artificial Intelligence and Data Science</td>
+                <td>MEPCO SCHLENK ENGINEERING COLLEGE</td>
+                <td>2026</td>
+                <td>7.9 CGPA</td>
+            </tr>
+            <tr>
+                <td>HSC</td>
+                <td>M.N.R.D GIRLS HR SEC SCHOOL</td>
+                <td>2021</td>
+                <td>91.30</td>
+            </tr>
+            <tr>
+                <td>SSLC</td>
+                <td>M.N.R.D GIRLS HR SEC SCHOOL</td>
+                <td>2019</td>
+                <td>92</td>
+            </tr>
+            <!-- Add more rows as necessary -->
+        </table>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project-box">
+            <h3>Train Prediction and Analysis</h3>
+            <p>Developed a model to predict train timings and analyze factors affecting punctuality.</p>
+        </div>
+        <div class="project-box">
+            <h3>Contact Management System</h3>
+            <p>Created a system for managing contacts with features such as adding, editing, and deleting entries.</p>
+        </div>
+        <div class="project-box">
+            <h3>Dining Philosopher Problem</h3>
+            <p>Implemented a solution to the classic synchronization problem using semaphores.</p>
+        </div>
+        <div class="project-box">
+            <h3>Number Game</h3>
+            <p>Developed an interactive number guessing game with varying difficulty levels.</p>
+        </div>
+        <div class="project-box">
+            <h3>Maze Solving Algorithm</h3>
+            <p>Created an algorithm to solve mazes using depth-first search and breadth-first search techniques.</p>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>Brief introduction about yourself, your background, and your career goals.</p>
-        </div>
-    </section>
-
-    <!-- Resume Section -->
-    <section id="resume" class="resume">
-        <div class="container">
-            <h2>Resume</h2>
-            <div class="resume-item">
-                <h3>Experience</h3>
-                <p>Details of your work experience, roles, and achievements.</p>
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <div class="skills-container">
+            <div class="skills-column">
+                <h3>Programming Language</h3>
+                <div class="skill-box">
+                    <ul>
+                        <li>C</li>
+                        <li>C++</li>
+                        <li>Java</li>
+                        <li>Python</li>
+                        <li>R</li>
+                    </ul>
+                </div>
             </div>
-            <div class="resume-item">
-                <h3>Education</h3>
-                <p>Your academic background.</p>
-            </div>
-            <div class="resume-item">
-                <h3>Skills</h3>
-                <p>Technical and soft skills.</p>
-            </div>
-            <div class="resume-item">
-                <h3>Certifications</h3>
-                <p>Relevant certifications and courses.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="projects">
-        <div class="container">
-            <h2>Projects</h2>
-            <div class="project-item">
-                <h3>Project Name</h3>
-                <p>Description of the project, technologies used, and your role.</p>
+            <div class="skills-column">
+                <h3>Machine Learning Libraries</h3>
+                <div class="skill-box">
+                    <ul>
+                        <li>scikit-Learn</li>
+                    </ul>
+                </div>
+                <h3>Data Analysis and Visualization</h3>
+                <div class="skill-box">
+                    <ul>
+                        <li>Pandas</li>
+                        <li>Matplotlib</li>
+                    </ul>
+                </div>
+                <h3>Database Management</h3>
+                <div class="skill-box">
+                    <ul>
+                        <li>SQL</li>
+                        <li>MongoDB</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
+    
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Contact Me</h2>
-            <form action="submit-form.php" method="post">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message" required></textarea>
-                <button type="submit">Send Message</button>
-            </form>
+    <section id="contact">
+        <h2>Contact</h2>
+        <div class="contact-info">
+            <p><strong>Phone Number:</strong> +91-90******40</p>
+            <p><strong>Email:</strong> pruthishri22_bai26@mepcoeng.ac.in</p>
+            <p><strong>Location:</strong> Madurai ,India</p>
+            <p><strong>LinkedIn:</strong> <a href="www.linkedin.com/in/preethi-murugesan-60352327b" target="_blank" rel="noopener noreferrer">linkedin.com/in/preethi</a></p>
         </div>
     </section>
+    
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
-        </div>
+    <footer>
+        <p>&copy; 2024 Preethi</p>
     </footer>
 </body>
 </html>
